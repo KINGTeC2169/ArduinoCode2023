@@ -53,6 +53,15 @@ void setup() {
 
 void loop() {
    button1 = digitalRead(button1Input);
+   button2 = digitalRead(button2Input);
+   button3 = digitalRead(button3Input);
+   button4 = digitalRead(button4Input);
+   button5 = digitalRead(button5Input);
+   button6 = digitalRead(button6Input);
+   button7 = digitalRead(button7Input);
+   button8 = digitalRead(button8Input);
+   button9 = digitalRead(button9Input);
+  
     if  button1 == HIGH) {
         digitalWrite(lightOutput, HIGH);
         Serial.println("On");
