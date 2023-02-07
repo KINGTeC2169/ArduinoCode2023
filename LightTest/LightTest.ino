@@ -1,12 +1,12 @@
-int button1Input = 12;
-int button2Input = 12;
-int button3Input = 12;
-int button4Input = 12;
-int button5Input = 12;
-int button6Input = 12;
-int button7Input = 12;
-int button8Input = 12;
-int button9Input = 12;
+const int button1Input = 1;
+const int button2Input = 2;
+const int button3Input = 3;
+const int button4Input = 4;
+const int button5Input = 5;
+const int button6Input = 6;
+const int button7Input = 7;
+const int button8Input = 8;
+const int button9Input = 9;
 int lightOutput = 13;
 int button1 = 0;
 int button2 = 0;
@@ -62,12 +62,45 @@ void loop() {
    button8 = digitalRead(button8Input);
    button9 = digitalRead(button9Input);
   
-    if  button1 == HIGH) {
+    if  (button1 == HIGH) {
         digitalWrite(lightOutput, HIGH);
-        Serial.println("On");
-    } else {
+        Serial.println("Button 1 On");
+      } 
+    else if  (button2 == HIGH) {
+        digitalWrite(lightOutput, HIGH);
+        Serial.println("Button 2 On");
+      } 
+    else if  (button3 == HIGH) {
+        digitalWrite(lightOutput, HIGH);
+        Serial.println("Button 3 On");
+      }
+    else if  (button4 == HIGH) {
+        digitalWrite(lightOutput, HIGH);
+        Serial.println("Button 4 On");
+      }
+    else if  (button5 == HIGH) {
+        digitalWrite(lightOutput, HIGH);
+        Serial.println("Button 5 On");
+      }
+    else if  (button6 == HIGH) {
+        digitalWrite(lightOutput, HIGH);
+        Serial.println("Button 6 On");
+      } 
+    else if  (button7 == HIGH) {
+        digitalWrite(lightOutput, HIGH);
+        Serial.println("Button 7 On");
+      }
+    else if  (button8 == HIGH) {
+        digitalWrite(lightOutput, HIGH);
+        Serial.println("Button 8 On");
+      }
+    else if  (button9 == HIGH) {
+        digitalWrite(lightOutput, HIGH);
+        Serial.println("Button 9 On");
+      }
+    else {
         digitalWrite(lightOutput, LOW);
-        Serial.println("Off");
+        Serial.println("Off ");
         
     }
 }
