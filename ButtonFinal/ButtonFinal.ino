@@ -1,76 +1,62 @@
 /*
-Arduino Leonardo Joystick!
+9 Button Extention for Driver Station
+KINGTeC 2169
 */
 
 #include <USBAPI.h>
 #include <Joystick.h>
 
+//Calls the Joystick library
 Joystick_ joySt;
 
-// TO DO: the values below don't quite zero out
-const int button00Pin = 2;
-const int button01Pin = 3;
-const int button02Pin = 4;
-const int button03Pin = 5;
-const int button04Pin = 6;
-const int button05Pin = 7;
-const int button06Pin = 8;
-const int button07Pin = 9;
-const int button08Pin = 10;
-const int button09Pin = 11;
-const int button10Pin = 12;
-const int button11Pin = 13;
-
-int button00State = 0;
-int button01State = 0;
-int button02State = 0;
-int button03State = 0;
-int button04State = 0;
-int button05State = 0;
-int button06State = 0;
-int button07State = 0;
-int button08State = 0;
-int button09State = 0;
-int button10State = 0;
-int button11State = 0;
+//defines the buttons' pins, which are used in a for loop later
+const int button0 = 0;
+const int button1 = 1;
+const int button2 = 2;
+const int button3 = 3;
+const int button4 = 4;
+const int button5 = 5;
+const int button6 = 6;
+const int button7 = 7;
+const int button8 = 8;
 
 void setup()
 {
-	pinMode(button00Pin, INPUT);
-	pinMode(button01Pin, INPUT);
-	pinMode(button02Pin, INPUT);
-	pinMode(button03Pin, INPUT);
-	pinMode(button04Pin, INPUT);
-	pinMode(button05Pin, INPUT);
-	pinMode(button06Pin, INPUT);
-	pinMode(button07Pin, INPUT);
-	pinMode(button08Pin, INPUT);
-	pinMode(button09Pin, INPUT);
-	pinMode(button10Pin, INPUT);
-	pinMode(button11Pin, INPUT);
+  //inits the pins and activates the built-in pull up resistors
+	pinMode(button0, INPUT_PULLUP);
+	pinMode(button1, INPUT_PULLUP);
+	pinMode(button2, INPUT_PULLUP);
+	pinMode(button3, INPUT_PULLUP);
+	pinMode(button4, INPUT_PULLUP);
+	pinMode(button5, INPUT_PULLUP);
+	pinMode(button6, INPUT_PULLUP);
+	pinMode(button7, INPUT_PULLUP);
+	pinMode(button8, INPUT_PULLUP);
 
   Serial.begin(9600);
 
   joySt.begin();
-	//joySt.buttons = 0;
 }
 
-const int pinToButtonMap = 9;
+bool currentButtonState = HIGH;
 
-// Last state of the button
-int lastButtonState[9] = {0,0,0,0,0,0,0,0,0};
+// Creates a list to help read the different button inputs
+int buttonz[9] = {button0, button1, button2, 
+                  button3, button4, button5, 
+                  button6, button7, button8};
 
 void loop() {
 
   // Read pin values
-  for (int index = 0; index < 9; index++)
-  {
-    int currentButtonState = !digitalRead(index + pinToButtonMap);
-    if (currentButtonState != lastButtonState[index])
-    {
-      joySt.setButton(index, currentButtonState);
-      lastButtonState[index] = currentButtonState;
+  for (int index = 0; index < 9; index++){
+    int buttonState = digitalRead(buttonz[index]);
+    //If a button is pressed, the driver station realizes
+    if (buttonState == HIGH){
+      joySt.setButton(index, 0);
+    }      
+    else{
+      joySt.setButton(index, 1);
     }
-  }
-  delay(100);
+  } 
+  delay(50);
 }
