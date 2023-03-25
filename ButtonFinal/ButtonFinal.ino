@@ -38,8 +38,6 @@ void setup()
   joySt.begin();
 }
 
-bool currentButtonState = HIGH;
-
 // Creates a list to help read the different button inputs
 int buttonz[9] = {button0, button1, button2, 
                   button3, button4, button5, 
