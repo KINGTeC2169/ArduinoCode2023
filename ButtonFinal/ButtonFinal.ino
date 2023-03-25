@@ -1,6 +1,8 @@
 /*
 9 Button Extention for Driver Station
 KINGTeC 2169
+
+NOTE: This sketch will only work on HID supporting arduinos like the Arduino Leonardo
 */
 
 #include <USBAPI.h>
@@ -19,6 +21,11 @@ const int button5 = 5;
 const int button6 = 6;
 const int button7 = 7;
 const int button8 = 8;
+const int button9 = 9;
+const int button10 = 10;
+const int button11 = 11;
+const int button12 = 12;
+const int button13 = 13;
 
 void setup()
 {
@@ -32,6 +39,11 @@ void setup()
 	pinMode(button6, INPUT_PULLUP);
 	pinMode(button7, INPUT_PULLUP);
 	pinMode(button8, INPUT_PULLUP);
+	pinMode(button9, INPUT_PULLUP);
+  pinMode(button10, INPUT_PULLUP);
+  pinMode(button11, INPUT_PULLUP);
+  pinMode(button12, INPUT_PULLUP);
+  pinMode(button13, INPUT_PULLUP);
 
   Serial.begin(9600);
 
@@ -39,14 +51,16 @@ void setup()
 }
 
 // Creates a list to help read the different button inputs
-int buttonz[9] = {button0, button1, button2, 
+int buttonz[14] = {button0, button1, button2, 
                   button3, button4, button5, 
-                  button6, button7, button8};
+                  button6, button7, button8,
+                  button9, button10, button11, 
+                  button12, button13};
 
 void loop() {
 
   // Read pin values
-  for (int index = 0; index < 9; index++){
+  for (int index = 0; index < 14; index++){
     int buttonState = digitalRead(buttonz[index]);
     //If a button is pressed, the driver station realizes
     if (buttonState == HIGH){
